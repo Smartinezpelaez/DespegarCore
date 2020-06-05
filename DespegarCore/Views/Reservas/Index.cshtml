@@ -1,0 +1,92 @@
+﻿@model IEnumerable<DespegarCore.Models.Reserva>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h6 style="text-align:center"> Reservas Despegar </h6>
+
+@Html.ActionLink(" ", "Create", "Reservas", null, new { @class = "btn btn-primary fas fa-plus circle" })
+
+
+<table class="table table-bordered ">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IDReserva)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Origen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destino)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechayHoraSalida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Silla)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clase)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroDocumento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aerolinea)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IDReserva)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Origen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Destino)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechayHoraSalida)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Silla)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Clase)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreCliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroDocumento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aerolinea)
+                </td>
+                <td>
+                    <!--Lo que se llame en Action link es una accion de tipo Get-->
+                    @Html.ActionLink(" ", "Edit", "Reservas", new { id = item.ID }, new { @class = "btn btn-primary btn-sm fas fa-edit" })
+                    @Html.ActionLink(" ", "Details", "Reservas", new { id = item.ID }, new { @class = "btn btn-primary btn-sm fas fa-info-circle" })
+                    @Html.ActionLink(" ", "Delete", "Reservas", new { id = item.ID }, new { @class = "btn btn-primary btn-sm fas fa-trash" })
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

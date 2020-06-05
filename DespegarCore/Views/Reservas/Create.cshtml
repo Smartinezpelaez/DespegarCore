@@ -1,0 +1,93 @@
+﻿@model DespegarCore.Models.Reserva
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<h6 style="text-align:center">Reservas Despegar</h6>
+
+
+
+<form asp-action="Create">
+    <div class="form-row">
+        <div class="col-md-5">
+            @Html.LabelFor(Model => Model.IDReserva)
+            @Html.EditorFor(Model => Model.IDReserva, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(Model => Model.IDReserva, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-5">
+            @Html.LabelFor(Model => Model.Origen)
+            @Html.EditorFor(Model => Model.Origen, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(Model => Model.Origen, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-md-5">
+            @Html.LabelFor(Model => Model.Destino)
+            @Html.EditorFor(Model => Model.Destino, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(Model => Model.Destino, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-5">
+            @Html.LabelFor(Model => Model.FechayHoraSalida)
+            @Html.EditorFor(Model => Model.FechayHoraSalida, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(Model => Model.FechayHoraSalida, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-md-5">
+            @Html.LabelFor(Model => Model.Silla)
+            @Html.EditorFor(Model => Model.Silla, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(Model => Model.Silla, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-5">
+            @Html.LabelFor(Model => Model.Clase)
+            @Html.EditorFor(Model => Model.Clase, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(Model => Model.Clase, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-5">
+            @Html.LabelFor(Model => Model.Precio)
+            @Html.EditorFor(Model => Model.Precio, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(Model => Model.Precio, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-5">
+            @Html.LabelFor(Model => Model.NombreCliente)
+            @Html.EditorFor(Model => Model.NombreCliente, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(Model => Model.NombreCliente, "", new { @class = "text-danger" })
+        </div>
+        
+    </div>
+    <div class="form-row">
+        <div class="col-md-5">
+            @Html.LabelFor(Model => Model.NumeroDocumento)
+            @Html.EditorFor(Model => Model.NumeroDocumento, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(Model => Model.NumeroDocumento, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-5">
+            @Html.LabelFor(Model => Model.Aerolinea)
+            @Html.EditorFor(Model => Model.Aerolinea, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(Model => Model.Aerolinea, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary ">
+            <i class="fas fa-save">
+            </i>
+        </button>
+        @Html.ActionLink(" ", "Index", "Reservas", null, new { @class = "btn btn-primary fas fa-undo-alt" })
+    </div>
+</form>
+  
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

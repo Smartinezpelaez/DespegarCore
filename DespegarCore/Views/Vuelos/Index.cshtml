@@ -1,0 +1,77 @@
+﻿@model IEnumerable<DespegarCore.Models.Vuelos>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h6 style="text-align:center"> Vuelos Despegar </h6>
+
+<p>
+    @Html.ActionLink(" Create", "Create", "Vuelos", null, new { @class = "btn btn-primary fas fa-plus circle" })
+</p>
+<table class="table table-bordered ">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IDVuelo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Origen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destino)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechayHoraSalida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clase)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aerolinea)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IDVuelo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Origen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Destino)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechayHoraSalida)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Clase)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aerolinea)
+                </td>
+                <td>
+                    @Html.ActionLink("Reservar",
+               "Create",
+               "Reservas",
+               new {idvuelo = item.IDVuelo , origen = item.Origen, destino=item.Destino,
+                   fechayHoraSalida = item.FechayHoraSalida, clase =item.Clase, precio = item.Precio,
+                   aerolineas = item.Aerolinea,
+               },
+               new { @class = "btn btn-primary"})
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

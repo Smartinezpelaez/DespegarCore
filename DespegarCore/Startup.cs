@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DespegarCore.Data;
+using DespegarCore.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -31,8 +34,22 @@ namespace DespegarCore
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            //conexion sql server Latam
+           // services.AddDbContext<LatamContext>(options =>
+            //options.UseSqlServer(Configuration.GetConnectionString("Lata")));
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            //conexion Mysql
+            services.AddDbContext<DespegarContext>(options =>
+               options.UseMySql(Configuration.GetConnectionString("defaultConnection")));
+
+            //conexion sql server Avianca
+            //services.AddDbContext<AviancaContext>(options =>
+            //options.UseSqlServer(Configuration.GetConnectionString("Avian")));
+
+           
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                 .AddJsonOptions(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
