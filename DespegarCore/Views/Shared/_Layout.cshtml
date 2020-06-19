@@ -11,7 +11,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
@@ -28,14 +28,14 @@
         <!-- ============================================================== -->
         <div class="bg-light border-right" id="sidebar-wrapper">
             <div class="sidebar-heading">
-                Despegar.Com
+                Menu
             </div>
             <div class="list-group list-group-flush">
 
-
+                <a class="list-group-item list-group-item-action bg-light fas fa-home" asp-area="" asp-controller="Home" asp-action="Index">  Home</a>
                 <a class="list-group-item list-group-item-action bg-light fas fa-registered" asp-area="" asp-controller="Reservas" asp-action="Index">  Reservas</a>
                 <a class="list-group-item list-group-item-action bg-light fas fa-plane-departure" asp-area="" asp-controller="Vuelos" asp-action="Index">  Vuelos</a>
-                
+
 
             </div>
         </div>
@@ -63,7 +63,14 @@
         <!-- End Page Content -->
         <!-- ============================================================== -->
     </div>
-
+    </div>
+    <!-- Footer -->
+    <footer class="py-5 bg-primary">
+        <div class="container">
+            <p class="m-0 text-center text-white">Despegar.com &copy;2020 Copyright Todos los derechos reservados. NIT NIT 900.610.518-5. RNT 20175</p>
+        </div>
+        <!-- /.container -->
+    </footer>
     <!-- ============================================================== -->
     <!-- Menu Toggle Script -->
     <!-- ============================================================== -->
@@ -74,6 +81,10 @@
         });
     </script>
 
+
+
+
     @RenderSection("Scripts", required: false)
+
 </body>
 </html>

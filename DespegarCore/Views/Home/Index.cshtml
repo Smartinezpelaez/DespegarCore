@@ -1,5 +1,86 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<div class="jumbotron text-center img-circle ">
+    <h1 class="bg-primary text-danger">  </h1>
+    <a href="Reservas/Index">
+        <img src="~/images/Despegar.com-LAVCA-Venture-Investors-IPO.jpg" />
+    </a>
+</div>
 
 
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card " style="width:350px ">
+                <a href="Vuelos/Index">
+                    <img class="card-img-top" src="~/images/295x200 cartagena.webp" alt="Card image">
+                </a>
+                <div class="card-body border shadow-sm p-4 p-lg-3 p-xl-2 bg-white">
+                    <h4 class="card-title">Cartagena</h4>
+                    <p class="card-text">Partiendo desde Cali</p>
+
+                    <div class="home-ui-procebox">
+                        <div class="home-ui-procebox_price">
+                            <span class="home-ui-procebox_price-symbol">$</span>
+                            350.000 COP
+                        </div><br />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-group">
+                            @Html.ActionLink("Reservar Vuelos", "Index", "Vuelos", new { @class = "btn btn-primary" })
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card " style="width:350px ">
+                <a href="Vuelos/Index">
+                    <img class="card-img-top" src="~/images/295x200medellin.webp" alt="Card image">
+                </a>
+                <div class="card-body border shadow-sm p-4 p-lg-3 p-xl-2 bg-white">
+                    <h4 class="card-title">Medellin</h4>
+                    <p class="card-text">Partiendo desde Cali</p>
+
+                    <div class="home-ui-procebox">
+                        <div class="home-ui-procebox_price">
+                            <span class="home-ui-procebox_price-symbol">$</span>
+                            150.000 COP
+                        </div><br />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-group">
+                            @Html.ActionLink("Reservar Vuelos", "Index", "Vuelos", new { @class = "btn btn-primary" })
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card " style="width:350px ">
+                <a href="Vuelos/Index">
+                    <img class="card-img-top" src="~/images/295x200bogo.webp" alt="Card image">
+                </a>
+                <div class="card-body border shadow-sm p-4 p-lg-3 p-xl-2 bg-white">
+                    <h4 class="card-title">Bogota</h4>
+                    <p class="card-text">Partiendo desde Cali</p>
+
+                    <div class="home-ui-procebox">
+                        <div class="home-ui-procebox_price">
+                            <span class="home-ui-procebox_price-symbol">$</span>
+                            160.000 COP
+                        </div><br />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-group">
+                            @Html.ActionLink("Reservar Vuelos", "Index", "Vuelos", new { @class = "btn btn-primary" })
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><br /> <br /> <br />
+
+    
+
+</div>

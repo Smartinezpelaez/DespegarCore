@@ -14,9 +14,42 @@ namespace DespegarCore.Services
 {
     public static class VuelosServices
     {
+        /*
+        public static async Task<bool> GetSilla(Reserva reserva)
+        {
+            HttpClient client = new HttpClient
+            {
+                BaseAddress = new Uri("https://localhost:44325/")
+            };
+
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var requestContent = new MultipartFormDataContent();
+            var values = new Dictionary<string, string>
+            {
+                { "IDReserva", reserva.IDReserva.ToString() },
+                { "Silla", reserva.Silla.ToString() }
+               
+            };
+            var content = new FormUrlEncodedContent(values);
+            requestContent.Add(content);
+
+            HttpResponseMessage response = await client.PostAsync("Reservas/GetSilla", content);
+            string responseText = await response.Content.ReadAsStringAsync();
+
+            response.Dispose();
+
+            if (response.IsSuccessStatusCode)
+                return true;
+
+            return false;
+        }
+        */
+
         public static List<Vuelos> GetAviancaVuelos()
         {
-            var client = new RestClient("https://localhost:44325");
+            var client = new RestClient("https://localhost:44325/");
             var request = new RestRequest("Vuelos/IndexJson", Method.GET);
 
             IRestResponse<List<Vuelos>> response = client.Execute<List<Vuelos>>(request);
@@ -32,7 +65,7 @@ namespace DespegarCore.Services
 
         public static List<Vuelos> GetLatamVuelos()
         {
-            var client = new RestClient("https://localhost:44336");
+            var client = new RestClient("https://localhost:44336/");
 
             var request = new RestRequest("Vuelos/IndexJson", Method.GET);
 
@@ -50,7 +83,7 @@ namespace DespegarCore.Services
 
         public static List<Vuelos> GetSatenaVuelos()
         {
-            var client = new RestClient("https://localhost:44398");
+            var client = new RestClient("https://localhost:44398/");
 
             var request = new RestRequest("Vuelos/IndexJson", Method.GET);
 
@@ -90,7 +123,6 @@ namespace DespegarCore.Services
             };
             var content = new FormUrlEncodedContent(values);
             requestContent.Add(content);
-
             
             HttpResponseMessage response = await client.PostAsync("Reservas/SaveReservaAPI", content);
             string responseText = await response.Content.ReadAsStringAsync();
@@ -103,54 +135,41 @@ namespace DespegarCore.Services
             return false;
         }
 
-        public static bool SaveReservaLatam(Reserva reserva)
+        public static async Task<bool> SaveReservaSatena(Reserva reserva)
         {
-            var client = new RestClient("https://localhost:44336");
-
-            var request = new RestRequest("Vuelos/IndexJson", Method.POST);
-            request.AddParameter("reservas", new
+            HttpClient client = new HttpClient
             {
-                reserva.IDReserva,
-                reserva.Origen,
-                reserva.Destino,
-                reserva.FechayHoraSalida,               
-                reserva.Silla,
-                reserva.Clase,
-                reserva.Aerolinea
-            });
+                BaseAddress = new Uri("https://localhost:44398/")
+            };
 
-            IRestResponse response = client.Execute(request);
-            var content = response.Content;
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                return true;
-            else
-                return false;
-        }
-
-        public static bool SaveReservaSatena(Reserva reserva)
-        {
-            var client = new RestClient("https://localhost:44398");
-
-            var request = new RestRequest("Vuelos/IndexJson", Method.POST);
-            request.AddParameter("reservas", new
+            var requestContent = new MultipartFormDataContent();
+            var values = new Dictionary<string, string>
             {
-                reserva.IDReserva,
-                reserva.Origen,
-                reserva.Destino,
-                reserva.FechayHoraSalida,
-                reserva.Silla,
-                reserva.Clase,
-                reserva.Aerolinea
-            });
+                { "IDReserva", reserva.IDReserva.ToString() },
+                { "Origen", reserva.Origen },
+                { "Destino", reserva.Destino },
+                { "FechayHoraSalida", reserva.FechayHoraSalida.ToString() },
+                { "Silla", reserva.Silla.ToString() },
+                { "Clase", reserva.Clase },
+                { "Precio", reserva.Precio.ToString() },
+                { "NombreCliente", reserva.NombreCliente },
+                { "NumeroDocumento", reserva.NumeroDocumento }
+            };
+            var content = new FormUrlEncodedContent(values);
+            requestContent.Add(content);
 
-            IRestResponse response = client.Execute(request);
-            var content = response.Content;
+            HttpResponseMessage response = await client.PostAsync("Reservas/SaveReservaAPI", content);
+            string responseText = await response.Content.ReadAsStringAsync();
 
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            response.Dispose();
+
+            if (response.IsSuccessStatusCode)
                 return true;
-            else
-                return false;
+
+            return false;
         }
 
     }

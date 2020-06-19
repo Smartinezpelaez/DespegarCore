@@ -6,13 +6,12 @@
 
 <h6 style="text-align:center"> Reservas Despegar </h6>
 
-@Html.ActionLink(" ", "Create", "Reservas", null, new { @class = "btn btn-primary fas fa-plus circle" })
 
 
 <table class="table table-bordered ">
     <thead>
         <tr>
-            <th>
+            <th style="visibility:hidden">
                 @Html.DisplayNameFor(model => model.IDReserva)
             </th>
             <th>
@@ -42,14 +41,14 @@
             <th>
                 @Html.DisplayNameFor(model => model.Aerolinea)
             </th>
-            <th></th>
+            <th>action</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td style="visibility:hidden">
                     @Html.DisplayFor(modelItem => item.IDReserva)
                 </td>
                 <td>

@@ -6,13 +6,11 @@
 
 <h6 style="text-align:center"> Vuelos Despegar </h6>
 
-<p>
-    @Html.ActionLink(" Create", "Create", "Vuelos", null, new { @class = "btn btn-primary fas fa-plus circle" })
-</p>
+
 <table class="table table-bordered ">
     <thead>
         <tr>
-            <th>
+            <th style="visibility:hidden">
                 @Html.DisplayNameFor(model => model.IDVuelo)
             </th>
             <th>
@@ -33,14 +31,14 @@
             <th>
                 @Html.DisplayNameFor(model => model.Aerolinea)
             </th>
-            <th></th>
+            <th>action</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td style="visibility:hidden">
                     @Html.DisplayFor(modelItem => item.IDVuelo)
                 </td>
                 <td>
@@ -70,6 +68,7 @@
                    aerolineas = item.Aerolinea,
                },
                new { @class = "btn btn-primary"})
+
                 </td>
             </tr>
         }

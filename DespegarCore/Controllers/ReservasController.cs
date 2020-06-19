@@ -45,11 +45,11 @@ namespace DespegarCore.Controllers
         }     
 
     // GET: Reservas/Create
-    public IActionResult Create(int ID, int idResereva, string aerolineas, string origen, string destino, DateTime? FechayHoraSalida, int silla, int precio, string clase)
+    public IActionResult Create(int ID, int idvuelo, string aerolineas, string origen, string destino, DateTime? FechayHoraSalida, int silla, int precio, string clase)
         {  
             
         DespegarCore.Models.Reserva reserva = new Reserva();
-        reserva.IDReserva = idResereva;
+        reserva.IDReserva = idvuelo;
             reserva.Origen = origen;
             reserva.Destino = destino;
             reserva.FechayHoraSalida = FechayHoraSalida;           
@@ -60,10 +60,11 @@ namespace DespegarCore.Controllers
             return View(reserva);
             
         }
-               
+
         // POST: Reservas/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,IDReserva,Origen,Destino,FechayHoraSalida,Silla,Clase,Precio,NombreCliente,NumeroDocumento,Aerolinea")] Reserva reserva)
@@ -71,19 +72,34 @@ namespace DespegarCore.Controllers
             if (ModelState.IsValid)
             {
                var status = "";
+                //var silla = "";
 
                 if (reserva.Aerolinea.Equals("Avianca"))
                 {
-                   // _context.Reserva.ToListAsync();
+                 
+                   // silla = Services.VuelosServices.GetSilla(reserva).ToString();
+                  //  if (silla.Equals(Response.StatusCode=200))
+                  //  {
+                        status = Services.VuelosServices.SaveReservaAvianca(reserva).ToString();
+                 //   }
+                  //  else
+                   // {
+                        //Mensaje para el cliente de silla ocupada
+                       // ClientScript.RegisterStartupScript();
+                   // }
+                   
+                }
 
-                    status = Services.VuelosServices.SaveReservaAvianca(reserva).ToString();
-                }               
-                                            
-                 if (!status.Equals(""))
-                 {
+                if (reserva.Aerolinea.Equals("Satena"))
+                {
+                    status = Services.VuelosServices.SaveReservaSatena(reserva).ToString();
+                }
+
+               // if (!status.Equals(""))
+                // {
                     _context.Add(reserva);
                     await _context.SaveChangesAsync();
-                 }                
+                // }                
                 
                 return RedirectToAction(nameof(Index));        
                
